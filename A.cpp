@@ -20,16 +20,16 @@ std::vector<int> PrefixFunction(const std::string & input) {
 }
 
 int main() {
-  std::string s;
-  std::string p;
-  std::cin >> s >> p;
+  std::string input_string;
+  std::string prefix;
+  std::cin >> input_string >> prefix;
 
-  std::string concatenated = p + '#' + s;
+  std::string concatenated = prefix + '#' + input_string;
   std::vector<int> prefix_s = PrefixFunction(concatenated);
 
-  for (size_t i = p.size() + 1; i < concatenated.size(); ++i) {
-    if (static_cast<uint64_t>(prefix_s[i]) == p.size()) {
-      std::cout << i - 2 * p.size() << "\n";
+  for (size_t i = prefix.size() + 1; i < concatenated.size(); ++i) {
+    if (static_cast<uint64_t>(prefix_s[i]) == prefix.size()) {
+      std::cout << i - 2 * prefix.size() << "\n";
     }
   }
   
