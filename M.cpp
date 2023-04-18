@@ -18,7 +18,8 @@ std::vector<int> SuffixArray (std::string &s) {
     
     for (auto &x : dict) {
         for (int u : x.second) {
-            c[u] = n_classes, p[sort_counter++] = u;
+            c[u] = n_classes;
+            p[sort_counter++] = u;
         }
         n_classes++;
     }
@@ -26,11 +27,13 @@ std::vector<int> SuffixArray (std::string &s) {
     for (int l = 1; n_classes < n; l++) {
         std::vector<std::vector<int> > arr_to_sort(n_classes);
         std::vector<int> new_classes(n);
+
         int d = (1 << l) / 2;
-        int class_one = sort_counter = 0;
+        sort_counter = 0;
+        int class_one = sort_counter;
         
         for (int i = 0; i < n; i++) {
-            int k = (p[i]-d+n)%n;
+            int k = (p[i] - d + n) % n;
             arr_to_sort[c[k]].push_back(k);
         }
         
