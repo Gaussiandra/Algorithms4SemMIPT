@@ -1,9 +1,10 @@
-#include <iostream>
-#include <vector>
-#include <cmath>
-#include <set>
 #include <algorithm>
+#include <cmath>
+#include <iostream>
+#include <set>
+#include <vector>
 
+/// \brief Получает индекс в переданном векторе по заданным x, n и предпосчитанному корню от n.
 inline int64_t AcquireIndex(int64_t x, int64_t n, int64_t n_sqr, const std::vector<int64_t> & belows) {
     if (x <= n) {
         return x - 1;
@@ -11,6 +12,7 @@ inline int64_t AcquireIndex(int64_t x, int64_t n, int64_t n_sqr, const std::vect
     return static_cast<int64_t>(belows.size() - (n_sqr / x)); 
 }
 
+/// \brief Предподсчитывает вектор элементов при заданном n, чтобы впоследствии заполнить DP вектор. 
 inline std::vector<int64_t> PrecalcBelows(int64_t n) {
     std::vector<int64_t> belows;
     for (int64_t i = 1; i * i <= n; ++i) {
