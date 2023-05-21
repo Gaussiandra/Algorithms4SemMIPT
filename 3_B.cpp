@@ -34,7 +34,7 @@ std::ostream& operator<<(std::ostream &out, Point &p) {
     return out;            
 }
 
-
+/// \brief Возвращает вектор точек, являющихся выпуклой оболочкой, используя алгоритм Грахама.
 std::vector<Point> Graham(std::vector<Point> points) {
     // find point to start with
     Point p0 = points[0];
