@@ -5,6 +5,7 @@
 #include <cmath>
 #include <iomanip>
 
+/// \brief Класс для хранения точки с целочисленными координатами.
 class Point {
 public:
     int64_t x, y;
@@ -17,8 +18,20 @@ public:
     inline int64_t operator^(Point other) { return x * other.y - y * other.x; }
     bool operator==(Point other) { return x == other.x && y == other.y; }
 
+    /*!
+    Вычисляет квадрат длины радиус-вектора соответствующего данной точке.
+    \param[in] point Точка для вычисления.
+    \return Квадрат длины радиус-вектора.
+    */
     inline static uint64_t SqLen(Point point) { return point.x * point.x + point.y * point.y; }
-
+    
+    /*!
+    Вычисляет площадь треугольника.
+    \param[in] a Первая точка.
+    \param[in] b Вторая точка.
+    \param[in] c Третья точка.
+    \return Площадь треугольника заданного тремя точками.
+    */
     inline static int64_t TriangleArea(Point a, Point b, Point c) {
         return (b - a).x * (c - a).y - (b - a).y * (c - a).x;
     }
@@ -34,7 +47,12 @@ std::ostream& operator<<(std::ostream &out, Point &p) {
     return out;            
 }
 
-/// \brief Возвращает вектор точек, являющихся выпуклой оболочкой, используя алгоритм Грахама.
+/*!
+Находит выпуклую оболочку заданных точек.
+\param[in] points Набор точек для построения оболочки.
+\details Реализует алгоритм Грахама. Имеет асимптотику O(nlogn), где n - points.size().
+\return Вектор точек, образующих выпуклую оболочку.
+*/
 std::vector<Point> Graham(std::vector<Point> points) {
     // find point to start with
     Point p0 = points[0];
